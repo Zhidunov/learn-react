@@ -11,10 +11,8 @@ function MyPosts() {
           <button>Удалить</button>
       </div>
       <div>
-        <Post />
-        <Post />
-        <Post />
-        <Post />
+        <Post message='Привет! Как дела?'/>
+        <Post message='Это мой первый пост'/>
       </div>
     </div>
   );
