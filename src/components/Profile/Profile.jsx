@@ -4,7 +4,7 @@ import MyPosts from './MyPosts/MyPosts.jsx';
 
 function Profile() {
   return (
-    <div className={styles.profile}>
+    <div>
       <div><img src='https://pngimage.net/wp-content/uploads/2018/06/retro-logo-png-6.png' alt='logoprofile' /></div>
       <div>Описание</div>
       <MyPosts />
