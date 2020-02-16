@@ -4,7 +4,7 @@ import styles from "./Post.module.css";
 function Post(props) {
   return (
     <div className={styles.item}>
-      <img src='https://lh3.googleusercontent.com/proxy/iQR_q9x3etxwacPCwSIyikGuCUYoB_YvP9W0VQ-EwekrOOikj16nYqB7nWafkmM7yXDYGljCroKGusjj-uIwpuIWAE69FjvBodZuLZ5N0eVxEtku_GUKIUkVzjsdrh9OlhWPjSrk' alt='Аватар' />
+      <img src='https://www.epicentrofestival.com/wp-content/uploads/2019/12/Tattoo-Clipart-Greaser-Pin-Up-Girl-Png-720x1149.jpg' alt='Аватар' />
       <div>{props.message}</div>
     </div>
   );

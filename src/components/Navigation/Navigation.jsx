@@ -5,19 +5,19 @@ function Navigation() {
   return (
     <nav className={styles.nav}>
       <div className={styles.item}>
-        <a href='#a'>Профиль</a>
+        <a href='/profile'>Профиль</a>
       </div>
       <div className={styles.item}>
-        <a href='#a'>Сообщения</a>
+        <a href='/dialogs'>Сообщения</a>
       </div>
       <div className={styles.item}>
-        <a href='#a'>Новости</a>
+        <a href='/news'>Новости</a>
       </div>
       <div className={styles.item}>
-        <a href='#a'>Музыка</a>
+        <a href='/music'>Музыка</a>
       </div>
       <div className={styles.item}>
-        <a href='#a'>Настройки</a>
+        <a href='/settings'>Настройки</a>
       </div>
     </nav>
   );
