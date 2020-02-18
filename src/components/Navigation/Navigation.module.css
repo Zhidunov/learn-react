@@ -2,8 +2,14 @@
     grid-area: n;
     background-color: #6FCB9F;
     height: 100vh;
+    padding: 30px;
 }
 
 .item a {
     color:  white;
+    text-decoration: none;
+}
+
+.item a.active {
+    color: rgb(117, 80, 0);
 }
