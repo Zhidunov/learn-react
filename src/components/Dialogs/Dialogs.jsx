@@ -12,10 +12,24 @@ function Dialogs(props) {
     <Message message={m.message} />
   ));
 
+  let textMessage = React.createRef();
+
+  function sendMessage() {
+    alert(`Сообщение ${textMessage.current.value} отправлено`);
+  }
+
   return (
     <div className={styles.dialogs}>
       <div className={styles.dialogs_items}>{dialogsElements}</div>
-      <div className={styles.dialogs_messages}>{messagesElements}</div>
+      <div className={styles.dialogs_messages}>
+        {messagesElements}{" "}
+        <div>
+          <textarea ref={textMessage} cols="30" rows="5" />
+        </div>
+        <div>
+          <button onClick={sendMessage}>Отправить</button>
+        </div>
+      </div>
     </div>
   );
 }

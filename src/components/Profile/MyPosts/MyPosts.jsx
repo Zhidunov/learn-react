@@ -7,13 +7,24 @@ function MyPosts(props) {
     <Post message={p.message} likesCount={p.likesCount} />
   ));
 
+  let newPostText = React.createRef();
+
+  function addPost() {
+    let text = newPostText.current.value;
+    alert(`Опубликовано: ${text}`);
+  }
+
+  function deletePost() {
+    alert("Удалено");
+  }
+
   return (
     <div className={styles.postsBlock}>
       <div>
-        <textarea />
+        <textarea ref={newPostText} />
         <div>
-          <button>Опубликовать</button>
-          <button>Удалить</button>
+          <button onClick={addPost}>Опубликовать</button>
+          <button onClick={deletePost}>Удалить</button>
         </div>
       </div>
       <div className={styles.posts}>{postsElement}</div>
