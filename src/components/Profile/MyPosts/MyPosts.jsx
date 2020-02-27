@@ -11,7 +11,7 @@ function MyPosts(props) {
 
   function addPost() {
     let text = newPostText.current.value;
-    alert(`Опубликовано: ${text}`);
+    props.addPost(text);
   }
 
   function deletePost() {

@@ -12,13 +12,18 @@ import { Route, BrowserRouter } from "react-router-dom";
 function App(props) {
   return (
     <BrowserRouter>
-      <div className="app-main">
+      <div className="app_main">
         <Header />
         <Nav />
-        <div className="app-main-content">
+        <div className="app_main_content">
           <Route
             path="/profile"
-            render={() => <Profile state={props.state.profilePage} />}
+            render={() => (
+              <Profile
+                state={props.state.profilePage}
+                addPost={props.addPost}
+              />
+            )}
           />
           <Route
             path="/dialogs"
