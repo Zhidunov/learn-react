@@ -10,18 +10,26 @@ function MyPosts(props) {
   let newPostText = React.createRef();
 
   function addPost() {
-    let text = newPostText.current.value;
-    props.addPost(text);
+    props.addPost();
   }
 
   function deletePost() {
     alert("Удалено");
   }
 
+  function onPostChange() {
+    let text = newPostText.current.value;
+    props.updateNewPostText(text);
+  }
+
   return (
     <div className={styles.postsBlock}>
       <div>
-        <textarea ref={newPostText} />
+        <textarea
+          ref={newPostText}
+          onChange={onPostChange}
+          value={props.newPostText}
+        />
         <div>
           <button onClick={addPost}>Опубликовать</button>
           <button onClick={deletePost}>Удалить</button>
