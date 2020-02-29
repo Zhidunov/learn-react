@@ -22,7 +22,8 @@ let state = {
       { id: 3, message: "Чем занимаешься?" },
       { id: 4, message: "Ку" },
       { id: 5, message: "Дратуте" }
-    ]
+    ],
+    newMessageText: "Сообщение..."
   }
 };
 
@@ -38,8 +39,24 @@ export function addPost() {
   rerenderEntireTree(state);
 }
 
-export function updateNewPostText(newText) {
-  state.profilePage.newPostText = newText;
+export function updateNewPostText(newPostText) {
+  state.profilePage.newPostText = newPostText;
+  rerenderEntireTree(state);
+}
+
+export function addMessage() {
+  let message = {
+    id: state.dialogsPage.messages.length + 1,
+    message: state.dialogsPage.newMessageText
+  };
+
+  state.dialogsPage.messages.push(message);
+  state.dialogsPage.newMessageText = "";
+  rerenderEntireTree(state);
+}
+
+export function updateNewMessageText(newMessageText) {
+  state.dialogsPage.newMessageText = newMessageText;
   rerenderEntireTree(state);
 }
 

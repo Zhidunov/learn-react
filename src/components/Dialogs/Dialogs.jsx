@@ -14,8 +14,13 @@ function Dialogs(props) {
 
   let textMessage = React.createRef();
 
-  function sendMessage() {
-    alert(`Сообщение ${textMessage.current.value} отправлено`);
+  function addMessage() {
+    props.addMessage();
+  }
+
+  function onMessageChange() {
+    let text = textMessage.current.value;
+    props.updateNewMessageText(text);
   }
 
   return (
@@ -24,10 +29,16 @@ function Dialogs(props) {
       <div className={styles.dialogs_messages}>
         {messagesElements}{" "}
         <div>
-          <textarea ref={textMessage} cols="30" rows="5" />
+          <textarea
+            onChange={onMessageChange}
+            value={props.newMessageText}
+            ref={textMessage}
+            cols="30"
+            rows="5"
+          />
         </div>
         <div>
-          <button onClick={sendMessage}>Отправить</button>
+          <button onClick={addMessage}>Отправить</button>
         </div>
       </div>
     </div>
