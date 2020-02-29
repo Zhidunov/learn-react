@@ -1,4 +1,4 @@
-import { rerenderEntireTree } from "../render.js";
+let rerenderEntireTree;
 
 let state = {
   profilePage: {
@@ -58,6 +58,10 @@ export function addMessage() {
 export function updateNewMessageText(newMessageText) {
   state.dialogsPage.newMessageText = newMessageText;
   rerenderEntireTree(state);
+}
+
+export function obs(observer) {
+  rerenderEntireTree = observer;
 }
 
 export default state;
