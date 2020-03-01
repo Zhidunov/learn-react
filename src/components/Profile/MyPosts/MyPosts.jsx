@@ -10,7 +10,7 @@ function MyPosts(props) {
   let newPostText = React.createRef();
 
   function addPost() {
-    props.addPost();
+    props.dispatch({ type: "ADD_POST" });
   }
 
   function deletePost() {
@@ -19,7 +19,7 @@ function MyPosts(props) {
 
   function onPostChange() {
     let text = newPostText.current.value;
-    props.updateNewPostText(text);
+    props.dispatch({ type: "UPDATE_NEW_POST_TEXT", newPostText: text });
   }
 
   return (

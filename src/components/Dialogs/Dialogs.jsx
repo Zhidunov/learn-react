@@ -9,30 +9,31 @@ function Dialogs(props) {
   ));
 
   let messagesElements = props.state.messages.map(m => (
-    <Message message={m.message} />
+    <Message id={m.id} message={m.message} />
   ));
 
-  let textMessage = React.createRef();
+  let newMessageText = React.createRef();
 
   function addMessage() {
-    props.addMessage();
+    props.dispatch({ type: "ADD_MESSAGE" });
   }
 
   function onMessageChange() {
-    let text = textMessage.current.value;
-    props.updateNewMessageText(text);
+    let text = newMessageText.current.value;
+    props.dispatch({ type: "UPDATE_NEW_MESSAGE_TEXT", newMessageText: text });
   }
 
   return (
     <div className={styles.dialogs}>
       <div className={styles.dialogs_items}>{dialogsElements}</div>
       <div className={styles.dialogs_messages}>
-        {messagesElements}{" "}
+        {messagesElements}
+
         <div>
           <textarea
             onChange={onMessageChange}
-            value={props.newMessageText}
-            ref={textMessage}
+            value={props.state.newMessageText}
+            ref={newMessageText}
             cols="30"
             rows="5"
           />
