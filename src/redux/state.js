@@ -1,3 +1,8 @@
+const ADD_POST = "ADD_POST";
+const UPDATE_NEW_POST_TEXT = "UPDATE_NEW_POST_TEXT";
+const ADD_MESSAGE = "ADD_MESSAGE";
+const UPDATE_NEW_MESSAGE_TEXT = "UPDATE_NEW_MESSAGE_TEXT";
+
 let store = {
   _state: {
     profilePage: {
@@ -65,7 +70,7 @@ let store = {
   //   this._callSubscriber(this._state);
   // },
   dispatch(action) {
-    if (action.type === "ADD_POST") {
+    if (action.type === ADD_POST) {
       let post = {
         id: this._state.profilePage.posts.length + 1,
         message: this._state.profilePage.newPostText,
@@ -74,10 +79,10 @@ let store = {
       this._state.profilePage.posts.push(post);
       this._state.profilePage.newPostText = "";
       this._callSubscriber(this._state);
-    } else if (action.type === "UPDATE_NEW_POST_TEXT") {
+    } else if (action.type === UPDATE_NEW_POST_TEXT) {
       this._state.profilePage.newPostText = action.newPostText;
       this._callSubscriber(this._state);
-    } else if (action.type === "ADD_MESSAGE") {
+    } else if (action.type === ADD_MESSAGE) {
       let message = {
         id: this._state.dialogsPage.messages.length + 1,
         message: this._state.dialogsPage.newMessageText
@@ -85,12 +90,38 @@ let store = {
       this._state.dialogsPage.messages.push(message);
       this._state.dialogsPage.newMessageText = "";
       this._callSubscriber(this._state);
-    } else if (action.type === "UPDATE_NEW_MESSAGE_TEXT") {
+    } else if (action.type === UPDATE_NEW_MESSAGE_TEXT) {
       this._state.dialogsPage.newMessageText = action.newMessageText;
       this._callSubscriber(this._state);
     }
   }
 };
+
+export function addPostActionCreator() {
+  return {
+    type: ADD_POST
+  };
+}
+
+export function updateNewPostTextActionCreator(text) {
+  return {
+    type: UPDATE_NEW_POST_TEXT,
+    newPostText: text
+  };
+}
+
+export function addMessageActionCreator() {
+  return {
+    type: ADD_MESSAGE
+  };
+}
+
+export function updateNewMessageActionCreator(text) {
+  return {
+    type: UPDATE_NEW_MESSAGE_TEXT,
+    newMessageText: text
+  };
+}
 
 export default store;
 window.store = store;
