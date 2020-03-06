@@ -1,4 +1,7 @@
-function sidebarReducer(state, action) {
+let initialState = {};
+
+function sidebarReducer(state = initialState, action) {
+
   return state;
 }
 
