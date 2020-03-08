@@ -13,6 +13,7 @@ function rerenderEntireTree(state) {
   );
 }
 
+debugger;
 rerenderEntireTree(store.getState());
 
 store.subscribe(() => {

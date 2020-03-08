@@ -3,7 +3,7 @@ import "./App.css";
 import Header from "./components/Header/Header.jsx";
 import Nav from "./components/Navigation/Navigation.jsx";
 import Profile from "./components/Profile/Profile.jsx";
-import Dialogs from "./components/Dialogs/Dialogs.jsx";
+import DialogsContainer from "./components/Dialogs/DialogsContainer.jsx";
 import News from "./components/News/News.jsx";
 import Music from "./components/Music/Music.jsx";
 import Settings from "./components/Settings/Settings.jsx";
@@ -18,20 +18,11 @@ function App(props) {
         <div className="app_main_content">
           <Route
             path="/profile"
-            render={() => (
-              <Profile
-                state={props.state.profilePage}
-                dispatch={props.dispatch}
-              />
-            )}
+            render={() => <Profile store={props.store} />}
           />
           <Route
             path="/dialogs"
-            render={() => (
-              <Dialogs
-                store={props.store}
-              />
-            )}
+            render={() => <DialogsContainer store={props.store} />}
           />
           <Route path="/news" component={News} />
           <Route path="/music" component={Music} />
