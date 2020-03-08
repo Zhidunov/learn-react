@@ -1,5 +1,5 @@
 {
-  "name": "react-app",
+  "name": "samurai-js-10",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -34,5 +34,5 @@
     ]
   },
   "keywords": [],
-  "description": "Samurai 1.0"
+  "description": ""
 }
