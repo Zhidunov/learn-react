@@ -27,7 +27,7 @@ function Dialogs(props) {
     <div className={styles.dialogs}>
       <div className={styles.dialogs_items}>{dialogsElements}</div>
       <div className={styles.dialogs_messages}>
-        {messagesElements}
+        <div>{messagesElements}</div>
 
         <div>
           <textarea
