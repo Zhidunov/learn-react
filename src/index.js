@@ -5,10 +5,13 @@ import React from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
 import App from "./App";
+import StoreContext from "./StoreContext.js";
 
 function rerenderEntireTree(state) {
   ReactDOM.render(
-    <App state={state} dispatch={store.dispatch.bind(store)} store={store} />,
+    <StoreContext.Provider value={store}>
+      <App />
+    </StoreContext.Provider>,
     document.getElementById("root")
   );
 }
