@@ -4,11 +4,11 @@ import DialogItem from "./DialogItem/DialogItem.jsx";
 import Message from "./Message/Message.jsx";
 
 function Dialogs(props) {
-  let dialogsElements = props.dialogs.map(d => (
+  let dialogsElements = props.dialogsPage.dialogs.map(d => (
     <DialogItem id={d.id} name={d.name} />
   ));
 
-  let messagesElements = props.messages.map(m => (
+  let messagesElements = props.dialogsPage.messages.map(m => (
     <Message id={m.id} message={m.message} />
   ));
 
@@ -32,7 +32,7 @@ function Dialogs(props) {
         <div>
           <textarea
             onChange={onMessageChange}
-            value={props.newMessageText}
+            value={props.dialogsPage.newMessageText}
             ref={newMessageText}
             cols="30"
             rows="5"

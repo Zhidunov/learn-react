@@ -3,7 +3,7 @@ import styles from "./MyPosts.module.css";
 import Post from "./Post/Post.jsx";
 
 function MyPosts(props) {
-  let postsElement = props.posts.map(p => (
+  let postsElement = props.profilePage.posts.map(p => (
     <Post message={p.message} likesCount={p.likesCount} />
   ));
 
@@ -28,7 +28,7 @@ function MyPosts(props) {
         <textarea
           ref={newPostText}
           onChange={onPostChange}
-          value={props.newPostText}
+          value={props.profilePage.newPostText}
         />
         <div>
           <button onClick={onAddPost}>Опубликовать</button>
