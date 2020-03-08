@@ -7,7 +7,7 @@ import { connect } from "react-redux";
 
 function mapStateToProps(state) {
   return {
-    dialogsPage: state.dialogsPage
+    profilePage: state.profilePage
   };
 }
 

@@ -8,7 +8,7 @@ import { Provider } from "react-redux";
 
 function rerenderEntireTree(state) {
   ReactDOM.render(
-    <Provider value={store}>
+    <Provider store={store}>
       <App />
     </Provider>,
     document.getElementById("root")
