@@ -4,7 +4,7 @@ import Post from "./Post/Post.jsx";
 
 function MyPosts(props) {
   let postsElement = props.profilePage.posts.map(p => (
-    <Post message={p.message} likesCount={p.likesCount} />
+    <Post message={p.message} likesCount={p.likesCount} key={p.id} />
   ));
 
   let newPostText = React.createRef();
