@@ -14,10 +14,6 @@ function Dialogs(props) {
 
   let newMessageText = React.createRef();
 
-  function onAddMessage() {
-    props.onAddMessage();
-  }
-
   function onMessageChange() {
     let text = newMessageText.current.value;
     props.onMessageChange(text);
@@ -39,7 +35,7 @@ function Dialogs(props) {
           />
         </div>
         <div>
-          <button onClick={onAddMessage}>Отправить</button>
+          <button onClick={props.onAddMessage}>Отправить</button>
         </div>
       </div>
     </div>
