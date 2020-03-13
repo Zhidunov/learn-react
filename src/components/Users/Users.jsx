@@ -3,8 +3,7 @@ import styles from "./Users.module.css";
 import * as axios from "axios";
 
 class Users extends React.Component {
-  constructor(props) {
-    super(props);
+  componentDidMount() {
     axios.get("https://x1p7q.sse.codesandbox.io/users").then(res => {
       this.props.setUsers(res.data.users);
     });
