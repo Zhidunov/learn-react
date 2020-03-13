@@ -20,8 +20,8 @@ function mapDispatchToProps(dispatch) {
     onUnFollow: userId => {
       dispatch(unFollowActionCreator(userId));
     },
-    setUsers: () => {
-      dispatch(setUsersActionCreator());
+    setUsers: users => {
+      dispatch(setUsersActionCreator(users));
     }
   };
 }
