@@ -2,8 +2,10 @@ const FOLLOW = "FOLLOW";
 const UNFOLLOW = "UNFOLLOW";
 const SET_USERS = "SET_USERS";
 
-let initialState = { users: [] };
-function usersReducer(state = initialState, action) {
+function usersReducer(
+  state = { users: [], pageSize: 5, totalUsersCount: 20, currentPage: 1 },
+  action
+) {
   switch (action.type) {
     case FOLLOW: {
       return {
