@@ -4,9 +4,17 @@ import * as axios from "axios";
 
 class Users extends React.Component {
   componentDidMount() {
-    axios.get("https://x1p7q.sse.codesandbox.io/users").then(res => {
-      this.props.setUsers(res.data.users);
+    axios.get(`http://localhost:4000/users?page=${this.props.currentPage}&count=${this.props.pageSize}`).then(res => {
+    this.props.setUsers(res.data.users);
+    this.props.setTotalUsersCount(res.data.totalCount); 
+      
     });
+  }
+
+  onPageChanged (pageNumber){
+    this.props.setCurrentPage(pageNumber);
+    axios.get(`http://localhost:4000/users?page=${pageNumber}&count=${this.props.pageSize}`).then(res => {
+    this.props.setUsers(res.data.users);})
   }
 
   render() {
@@ -23,13 +31,7 @@ class Users extends React.Component {
         <div>
           {pages.map(p => {
             return (
-              <span
-                className={
-                  this.props.currentPage === p ? styles.selectedPage : ""
-                }
-              >
-                {p}
-              </span>
+              <span className={this.props.currentPage === p ? styles.selectedPage : ""} onClick={()=>{this.onPageChanged(p)}}>{p}</span>
             );
           })}
         </div>

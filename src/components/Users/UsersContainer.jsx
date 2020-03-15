@@ -2,7 +2,9 @@ import Users from "./Users.jsx";
 import {
   followActionCreator,
   unFollowActionCreator,
-  setUsersActionCreator
+  setUsersActionCreator,
+  setCurrentPageActionCreator,
+  setTotalUsersCountActionCreator
 } from "./../../redux/usersReducer.js";
 import { connect } from "react-redux";
 
@@ -25,6 +27,12 @@ function mapDispatchToProps(dispatch) {
     },
     setUsers: users => {
       dispatch(setUsersActionCreator(users));
+    },
+    setCurrentPage: page => {
+      dispatch(setCurrentPageActionCreator(page))
+    },
+    setTotalUsersCount: count => {
+      dispatch(setTotalUsersCountActionCreator(count))
     }
   };
 }
