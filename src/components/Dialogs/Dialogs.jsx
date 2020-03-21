@@ -2,6 +2,7 @@ import React from "react";
 import styles from "./Dialogs.module.css";
 import DialogItem from "./DialogItem/DialogItem.jsx";
 import Message from "./Message/Message.jsx";
+import { Button } from "./../Common/Button/Button.jsx";
 
 function Dialogs(props) {
   let dialogsElements = props.dialogsPage.dialogs.map(d => (
@@ -35,7 +36,13 @@ function Dialogs(props) {
           />
         </div>
         <div>
-          <button onClick={props.onAddMessage}>Отправить</button>
+          <Button
+            onClick={props.onAddMessage}
+            type="button"
+            buttonStyle="btn--primary--outline"
+          >
+            Отправить
+          </Button>
         </div>
       </div>
     </div>
