@@ -67,42 +67,42 @@ function usersReducer(
   }
 }
 
-export function followActionCreator(userID) {
+export function onFollow(userID) {
   return {
     type: FOLLOW,
     userID
   };
 }
 
-export function unFollowActionCreator(userID) {
+export function onUnFollow(userID) {
   return {
     type: UNFOLLOW,
     userID
   };
 }
 
-export function setUsersActionCreator(users) {
+export function setUsers(users) {
   return {
     type: SET_USERS,
     users
   };
 }
 
-export function setCurrentPageActionCreator(page) {
+export function setCurrentPage(page) {
   return {
     type: SET_CURRENT_PAGE,
     currentPage: page
   };
 }
 
-export function setTotalUsersCountActionCreator(count) {
+export function setTotalUsersCount(count) {
   return {
     type: SET_TOTAL_COUNT,
     totalUsersCount: count
   };
 }
 
-export function toggleIsFetchingActionCreator(isFetching) {
+export function setToggleIsFetching(isFetching) {
   return {
     type: TOGGLE_IS_FETCHING,
     isFetching: isFetching
