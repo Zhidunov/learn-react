@@ -1,8 +1,5 @@
 import MyPosts from "./MyPosts.jsx";
-import {
-  addPostActionCreator,
-  updateNewPostTextActionCreator
-} from "./../../../redux/profileReducer.js";
+import { addPost, updateNewPostText } from "./../../../redux/profileReducer.js";
 import { connect } from "react-redux";
 
 function mapStateToProps(state) {
@@ -14,10 +11,10 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
   return {
     updateNewPostText: text => {
-      dispatch(updateNewPostTextActionCreator(text));
+      dispatch(updateNewPostText(text));
     },
     addPost: () => {
-      dispatch(addPostActionCreator());
+      dispatch(addPost());
     },
     deletePost: () => {
       alert("Удалено");

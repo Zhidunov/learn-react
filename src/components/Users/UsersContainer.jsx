@@ -10,27 +10,28 @@ import {
 import { connect } from "react-redux";
 import * as axios from "axios";
 import Users from "./Users.jsx";
-import Preloader from "./Preloader/Preloader.jsx";
+import Preloader from "./../Common/Preloader/Preloader.jsx";
 
 class UsersContainer extends React.Component {
   componentDidMount() {
     this.props.setToggleIsFetching(true);
     axios
-      // .get(
-      //   `https://syr8v.sse.codesandbox.io/users?page=${
-      //     this.props.currentPage
-      //   }&count=${this.props.pageSize}`
-      // )
       .get(
-          `http://localhost:4000/users?page=${
-            this.props.currentPage
-          }&count=${this.props.pageSize}`
-        )
+        `https://7jixt.sse.codesandbox.io/users?page=${
+          this.props.currentPage
+        }&count=${this.props.pageSize}`
+      )
+      // .get(
+      //     `http://localhost:4000/users?page=${
+      //       this.props.currentPage
+      //     }&count=${this.props.pageSize}`
+      //   )
       .then(res => {
-        setTimeout(()=>{this.props.setToggleIsFetching(false);
+        setTimeout(() => {
+          this.props.setToggleIsFetching(false);
           this.props.setUsers(res.data.users);
-          this.props.setTotalUsersCount(res.data.totalCount);}, 1000);
-        
+          this.props.setTotalUsersCount(res.data.totalCount);
+        }, 1000);
       });
   }
 
@@ -38,36 +39,40 @@ class UsersContainer extends React.Component {
     this.props.setToggleIsFetching(true);
     this.props.setCurrentPage(pageNumber);
     axios
-      // .get(
-      //   `https://syr8v.sse.codesandbox.io/users?page=${pageNumber}&count=${
-      //     this.props.pageSize
-      //   }`
-      // )
       .get(
-        `http://localhost:4000/users?page=${pageNumber}&count=${
+        `https://7jixt.sse.codesandbox.io/users?page=${pageNumber}&count=${
           this.props.pageSize
         }`
       )
+      // .get(
+      //   `http://localhost:4000/users?page=${pageNumber}&count=${
+      //     this.props.pageSize
+      //   }`
+      // )
       .then(res => {
-        setTimeout(()=>{this.props.setToggleIsFetching(false);
-          this.props.setUsers(res.data.users);}, 1000);
-        
+        setTimeout(() => {
+          this.props.setToggleIsFetching(false);
+          this.props.setUsers(res.data.users);
+        }, 1000);
       });
   };
 
   render() {
     return (
       <>
-        {this.props.isFetching ? <Preloader /> : <Users
-          totalUsersCount={this.props.totalUsersCount}
-          pageSize={this.props.pageSize}
-          currentPage={this.props.currentPage}
-          onPageChanged={this.onPageChanged}
-          users={this.props.users}
-          onUnFollow={this.props.onUnFollow}
-          onFollow={this.props.onFollow}
-        />}
-        
+        {this.props.isFetching ? (
+          <Preloader />
+        ) : (
+          <Users
+            totalUsersCount={this.props.totalUsersCount}
+            pageSize={this.props.pageSize}
+            currentPage={this.props.currentPage}
+            onPageChanged={this.onPageChanged}
+            users={this.props.users}
+            onUnFollow={this.props.onUnFollow}
+            onFollow={this.props.onFollow}
+          />
+        )}
       </>
     );
   }

@@ -1,13 +1,20 @@
 import React from "react";
-import styles from './ProfileInfo.module.css';
+import styles from "./ProfileInfo.module.css";
+import Preloader from "../../Common/Preloader/Preloader.jsx";
 
-function ProfileInfo() {
-  return (
-    <div>
-      <div><img src='https://pngimage.net/wp-content/uploads/2018/06/retro-logo-png-6.png' alt='logoprofile' /></div>
-      <div className={styles.descriptionBlock}>Описание</div>
-    </div>
-  );
+function ProfileInfo(props) {
+  if (!props.profile) {
+    return <Preloader />;
+  } else {
+    return (
+      <div>
+        <div className={styles.avatarImg}>
+          <img src={props.profile.avatarURL} alt="logoprofile" />
+        </div>
+        <div className={styles.descriptionBlock}>Описание</div>
+      </div>
+    );
+  }
 }
 
 export default ProfileInfo;

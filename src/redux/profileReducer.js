@@ -1,12 +1,14 @@
 const ADD_POST = "ADD_POST";
 const UPDATE_NEW_POST_TEXT = "UPDATE_NEW_POST_TEXT";
+const SET_USER_PROFILE = "SET_USER_PROFILE";
 
 let initialState = {
   posts: [
     { id: 1, message: "Это мой первый пост", likesCount: 12 },
     { id: 2, message: "Это мой второй пост", likesCount: 7 }
   ],
-  newPostText: "Text"
+  newPostText: "Text",
+  profile: null
 };
 
 function profileReducer(state = initialState, action) {
@@ -22,21 +24,31 @@ function profileReducer(state = initialState, action) {
     case UPDATE_NEW_POST_TEXT: {
       return { ...state, newPostText: action.newPostText };
     }
+    case SET_USER_PROFILE: {
+      return { ...state, profile: action.profile };
+    }
     default:
       return state;
   }
 }
 
-export function addPostActionCreator() {
+export function addPost() {
   return {
     type: ADD_POST
   };
 }
 
-export function updateNewPostTextActionCreator(text) {
+export function updateNewPostText(text) {
   return {
     type: UPDATE_NEW_POST_TEXT,
     newPostText: text
+  };
+}
+
+export function setUserProfile(profile) {
+  return {
+    type: SET_USER_PROFILE,
+    profile
   };
 }
 
