@@ -8,11 +8,16 @@ import { connect } from "react-redux";
 import * as axios from "axios";
 import Profile from "./Profile.jsx";
 import Preloader from "./../Common/Preloader/Preloader.jsx";
+import { withRouter } from "react-router";
 
 class ProfileContainer extends React.Component {
   componentDidMount() {
+    let id = this.props.match.params.UserID;
+    if (!id) {
+      id = 2;
+    }
     axios
-      .get(`https://7jixt.sse.codesandbox.io/profile?id=2`)
+      .get(`https://7jixt.sse.codesandbox.io/profile/${id}`)
       // .get(
       //     `http://localhost:4000/profile?id=2`
       //   )
@@ -61,6 +66,8 @@ function mapStateToProps(state) {
 //   };
 // }
 
+let withURLProfCont = withRouter(ProfileContainer);
+
 export default connect(
   mapStateToProps,
   {
@@ -68,4 +75,4 @@ export default connect(
     updateNewPostText,
     setUserProfile
   }
-)(ProfileContainer);
+)(withURLProfCont);
