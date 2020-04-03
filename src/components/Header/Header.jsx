@@ -1,12 +1,17 @@
-import React from 'react';
-import styles from './Header.module.css';
-import Logo from './Logo/Logo.jsx'
+import React from "react";
+import Logo from "./Logo/Logo.jsx";
+import { NavLink } from "react-router-dom";
+import styles from "./Header.module.css";
 
-function Header(){
-    return (
+function Header() {
+  return (
     <header className={styles.header}>
-        <Logo />
-    </header>);
+      <Logo />
+      <div className={styles.loginBlock}>
+        <NavLink to={"/login"}>Login</NavLink>
+      </div>
+    </header>
+  );
 }
 
 export default Header;

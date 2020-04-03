@@ -1,6 +1,6 @@
 import React from "react";
 import "./App.css";
-import Header from "./components/Header/Header.jsx";
+import HeaderContainer from "./components/Header/HeaderContainer.jsx";
 import Nav from "./components/Navigation/Navigation.jsx";
 import ProfileContainer from "./components/Profile/ProfileContainer.jsx";
 import DialogsContainer from "./components/Dialogs/DialogsContainer.jsx";
@@ -14,7 +14,7 @@ function App(props) {
   return (
     <BrowserRouter>
       <div className="app_main">
-        <Header />
+        <HeaderContainer />
         <Nav />
         <div className="app_main_content">
           <Route path="/profile/:UserID?" render={() => <ProfileContainer />} />
