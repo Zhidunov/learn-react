@@ -31,7 +31,7 @@ class UsersContainer extends React.Component {
           this.props.setToggleIsFetching(false);
           this.props.setUsers(res.data.users);
           this.props.setTotalUsersCount(res.data.totalCount);
-        }, 1000);
+        }, 300);
       });
   }
 
@@ -53,7 +53,7 @@ class UsersContainer extends React.Component {
         setTimeout(() => {
           this.props.setToggleIsFetching(false);
           this.props.setUsers(res.data.users);
-        }, 1000);
+        }, 300);
       });
   };
 
