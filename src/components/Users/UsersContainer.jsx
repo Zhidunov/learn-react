@@ -8,59 +8,31 @@ import {
   setToggleIsFetching
 } from "./../../redux/usersReducer.js";
 import { connect } from "react-redux";
-import * as axios from "axios";
 import Users from "./Users.jsx";
 import Preloader from "./../Common/Preloader/Preloader.jsx";
+import { getUsers } from "../../api/api.js";
 
 class UsersContainer extends React.Component {
   componentDidMount() {
     this.props.setToggleIsFetching(true);
-    axios
-      .get(
-        `https://7jixt.sse.codesandbox.io/users?page=${
-          this.props.currentPage
-        }&count=${this.props.pageSize}`
-        // {
-        //   withCredentials: true
-        // }
-      )
-      // .get(
-      //     `http://localhost:4000/users?page=${
-      //       this.props.currentPage
-      //     }&count=${this.props.pageSize}`
-      //   )
-      .then(res => {
-        setTimeout(() => {
-          this.props.setToggleIsFetching(false);
-          this.props.setUsers(res.data.users);
-          this.props.setTotalUsersCount(res.data.totalCount);
-        }, 300);
-      });
+    getUsers(this.props.currentPage, this.props.pageSize).then(data => {
+      setTimeout(() => {
+        this.props.setToggleIsFetching(false);
+        this.props.setUsers(data.users);
+        this.props.setTotalUsersCount(data.totalCount);
+      }, 300);
+    });
   }
 
   onPageChanged = pageNumber => {
     this.props.setToggleIsFetching(true);
     this.props.setCurrentPage(pageNumber);
-    axios
-      .get(
-        `https://7jixt.sse.codesandbox.io/users?page=${pageNumber}&count=${
-          this.props.pageSize
-        }`
-        // {
-        //   withCredentials: true
-        // }
-      )
-      // .get(
-      //   `http://localhost:4000/users?page=${pageNumber}&count=${
-      //     this.props.pageSize
-      //   }`
-      // )
-      .then(res => {
-        setTimeout(() => {
-          this.props.setToggleIsFetching(false);
-          this.props.setUsers(res.data.users);
-        }, 300);
-      });
+    getUsers(pageNumber, this.props.pageSize).then(data => {
+      setTimeout(() => {
+        this.props.setToggleIsFetching(false);
+        this.props.setUsers(data.users);
+      }, 300);
+    });
   };
 
   render() {
