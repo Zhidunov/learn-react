@@ -20,6 +20,9 @@ class UsersContainer extends React.Component {
         `https://7jixt.sse.codesandbox.io/users?page=${
           this.props.currentPage
         }&count=${this.props.pageSize}`
+        // {
+        //   withCredentials: true
+        // }
       )
       // .get(
       //     `http://localhost:4000/users?page=${
@@ -43,6 +46,9 @@ class UsersContainer extends React.Component {
         `https://7jixt.sse.codesandbox.io/users?page=${pageNumber}&count=${
           this.props.pageSize
         }`
+        // {
+        //   withCredentials: true
+        // }
       )
       // .get(
       //   `http://localhost:4000/users?page=${pageNumber}&count=${
