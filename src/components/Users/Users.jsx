@@ -36,11 +36,14 @@ function Users(props) {
           <div>
             {u.followed ? (
               <button
+                disabled={props.followingInProgress.some(id => id === u.id)}
                 onClick={() => {
+                  props.setToggleIsFollowing(true, u.id);
                   setFollow(u.id).then(data => {
                     if (data.resultCode === 0) {
                       props.onUnFollow(u.id);
                     }
+                    props.setToggleIsFollowing(false, u.id);
                   });
                 }}
               >
@@ -49,10 +52,12 @@ function Users(props) {
             ) : (
               <button
                 onClick={() => {
+                  props.setToggleIsFollowing(true, u.id);
                   setFollow(u.id).then(data => {
                     if (data.resultCode === 0) {
                       props.onFollow(u.id);
                     }
+                    props.setToggleIsFollowing(false, u.id);
                   });
                   props.onFollow(u.id);
                 }}

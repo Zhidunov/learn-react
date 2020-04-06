@@ -4,6 +4,7 @@ const SET_USERS = "SET_USERS";
 const SET_CURRENT_PAGE = "SET_CURRENT_PAGE";
 const SET_TOTAL_COUNT = "SET_TOTAL_COUNT";
 const TOGGLE_IS_FETCHING = "TOGGLE_IS_FETCHING";
+const TOGGLE_IS_FOLLOWING = "TOGGLE_IS_FOLLOWING";
 
 function usersReducer(
   state = {
@@ -11,7 +12,8 @@ function usersReducer(
     pageSize: 4,
     totalUsersCount: 0,
     currentPage: 1,
-    isFetching: false
+    isFetching: false,
+    followingInProgress: []
   },
   action
 ) {
@@ -62,6 +64,14 @@ function usersReducer(
         isFetching: action.isFetching
       };
     }
+    case TOGGLE_IS_FOLLOWING: {
+      return {
+        ...state,
+        followingInProgress: action.followingInProgress
+          ? [...state.followingInProgress, action.id]
+          : [state.followingInProgress.filter(id => id !== action.id)]
+      };
+    }
     default:
       return state;
   }
@@ -106,6 +116,14 @@ export function setToggleIsFetching(isFetching) {
   return {
     type: TOGGLE_IS_FETCHING,
     isFetching: isFetching
+  };
+}
+
+export function setToggleIsFollowing(followingInProgress, id) {
+  return {
+    type: TOGGLE_IS_FOLLOWING,
+    followingInProgress: followingInProgress,
+    id: id
   };
 }
 
