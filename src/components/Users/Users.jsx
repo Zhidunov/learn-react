@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "./Users.module.css";
 import { NavLink } from "react-router-dom";
-import { setFollow } from "../../api/api.js";
+import { usersAPI } from "../../api/api.js";
 
 function Users(props) {
   let pagesCount = Math.ceil(props.totalUsersCount / props.pageSize);
@@ -38,13 +38,14 @@ function Users(props) {
               <button
                 disabled={props.followingInProgress.some(id => id === u.id)}
                 onClick={() => {
-                  props.setToggleIsFollowing(true, u.id);
-                  setFollow(u.id).then(data => {
-                    if (data.resultCode === 0) {
-                      props.onUnFollow(u.id);
-                    }
-                    props.setToggleIsFollowing(false, u.id);
-                  });
+                  props.setUnFollowTC(u.id);
+                  // props.setToggleIsFollowing(true, u.id);
+                  // usersAPI.setUnFollow(u.id).then(data => {
+                  //   if (data.resultCode === 0) {
+                  //     props.onUnFollow(u.id);
+                  //   }
+                  //   props.setToggleIsFollowing(false, u.id);
+                  // });
                 }}
               >
                 Удалить
@@ -52,14 +53,15 @@ function Users(props) {
             ) : (
               <button
                 onClick={() => {
-                  props.setToggleIsFollowing(true, u.id);
-                  setFollow(u.id).then(data => {
-                    if (data.resultCode === 0) {
-                      props.onFollow(u.id);
-                    }
-                    props.setToggleIsFollowing(false, u.id);
-                  });
-                  props.onFollow(u.id);
+                  props.setFollowTC(u.id);
+                  // props.setToggleIsFollowing(true, u.id);
+                  // usersAPI.setFollow(u.id).then(data => {
+                  //   if (data.resultCode === 0) {
+                  //     props.onFollow(u.id);
+                  //   }
+                  //   props.setToggleIsFollowing(false, u.id);
+                  // });
+                  // props.onFollow(u.id);
                 }}
               >
                 Добавить

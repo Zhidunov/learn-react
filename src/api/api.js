@@ -18,28 +18,30 @@ const instances = {
   })
 };
 
-export const getUsers = (currentPage, pageSize) => {
-  return instances.instanceSndbx
-    .get(
-      `users?page=${currentPage}&count=${pageSize}`
-      // {
-      //   withCredentials: true
-      // }
-    )
-    .then(res => {
-      return res.data;
-    });
-};
+export const usersAPI = {
+  getUsers(currentPage, pageSize){
+    return instances.instanceSndbx
+      .get(
+        `users?page=${currentPage}&count=${pageSize}`
+      )
+      .then(res => {
+        return res.data;
+      });
+  },
 
-export const setFollow = id => {
-  return instances.instanceSamuraiJS
-    .delete(`follow/${id}`, {
-      withCredentials: true,
-      headers: {
-        "API-KEY": "c8c905ae-18c5-4694-965e-904ae69c0400"
-      }
-    })
-    .then(res => {
-      return res.data;
-    });
-};
+  setFollow(id){
+    return instances.instanceSamuraiJS
+      .post(`follow/${id}`)
+      .then(res => {
+        return res.data;
+      });
+  },
+
+  setUnFollow(id){
+    return instances.instanceSamuraiJS
+      .delete(`follow/${id}`)
+      .then(res => {
+        return res.data;
+      });
+  }
+}
