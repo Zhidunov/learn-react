@@ -4,9 +4,10 @@ import {
   updateNewMessageActionCreator
 } from "./../../redux/dialogsReducer.js";
 import { connect } from "react-redux";
+import { compose } from "redux";
 import { withAuthRedirect } from "./../hoc/withAuthRedirect.js";
 
-let AuthRedirectComponent = withAuthRedirect(Dialogs);
+
 
 function mapStateToProps(state) {
   return {
@@ -25,9 +26,7 @@ function mapDispatchToProps(dispatch) {
   };
 }
 
-let DialogsContainer = connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(AuthRedirectComponent);
-
-export default DialogsContainer;
+export default compose(
+  connect(mapStateToProps, mapDispatchToProps),
+  withAuthRedirect
+)(Dialogs);
