@@ -1,7 +1,5 @@
 import React from "react";
 import {
-  onFollow,
-  onUnFollow,
   setCurrentPage,
   setToggleIsFollowing,
   getUsersTC,
@@ -15,14 +13,6 @@ import Preloader from "./../Common/Preloader/Preloader.jsx";
 class UsersContainer extends React.Component {
   componentDidMount() {
     this.props.getUsersTC(this.props.currentPage, this.props.pageSize);
-    // this.props.setToggleIsFetching(true);
-    // getUsers(this.props.currentPage, this.props.pageSize).then(data => {
-    //   setTimeout(() => {
-    //     this.props.setToggleIsFetching(false);
-    //     this.props.setUsers(data.users);
-    //     this.props.setTotalUsersCount(data.totalCount);
-    //   }, 300);
-    // });
   }
 
   onPageChanged = pageNumber => {
@@ -64,29 +54,6 @@ function mapStateToProps(state) {
     followingInProgress: state.usersPage.followingInProgress
   };
 }
-
-// function mapDispatchToProps(dispatch) {
-//   return {
-//     onFollow: userId => {
-//       dispatch(followActionCreator(userId));
-//     },
-//     onUnFollow: userId => {
-//       dispatch(unFollowActionCreator(userId));
-//     },
-//     setUsers: users => {
-//       dispatch(setUsersActionCreator(users));
-//     },
-//     setCurrentPage: page => {
-//       dispatch(setCurrentPageActionCreator(page));
-//     },
-//     setTotalUsersCount: count => {
-//       dispatch(setTotalUsersCountActionCreator(count));
-//     },
-//     setToggleIsFetching: isFetching => {
-//       dispatch(toggleIsFetchingActionCreator(isFetching));
-//     }
-//   };
-// }
 
 export default connect(
   mapStateToProps,

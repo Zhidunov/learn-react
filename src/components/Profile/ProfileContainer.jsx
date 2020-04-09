@@ -2,7 +2,8 @@ import React from "react";
 import {
   addPost,
   updateNewPostText,
-  setUserProfile
+  setUserProfile,
+  setUserProfileTC
 } from "./../../redux/profileReducer.js";
 import { connect } from "react-redux";
 import * as axios from "axios";
@@ -12,18 +13,7 @@ import { withRouter } from "react-router";
 
 class ProfileContainer extends React.Component {
   componentDidMount() {
-    let id = this.props.match.params.UserID;
-    if (!id) {
-      id = 2;
-    }
-    axios
-      .get(`https://7jixt.sse.codesandbox.io/profile/${id}`)
-      // .get(
-      //     `http://localhost:4000/profile?id=2`
-      //   )
-      .then(res => {
-        this.props.setUserProfile(res.data);
-      });
+    this.props.setUserProfileTC(this.props.match.params.UserID);
   }
 
   render() {
@@ -73,6 +63,7 @@ export default connect(
   {
     addPost,
     updateNewPostText,
-    setUserProfile
+    setUserProfile,
+    setUserProfileTC
   }
 )(withURLProfCont);

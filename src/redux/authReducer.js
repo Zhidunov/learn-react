@@ -1,3 +1,5 @@
+import { loginAPI } from "./../api/api.js";
+
 const SET_AUTH_USER_DATA = "SET_AUTH_USER_DATA";
 const TOGGLE_IS_FETCHING = "TOGGLE_IS_FETCHING";
 
@@ -44,5 +46,16 @@ export const setToggleIsFetching = isFetching => {
     isFetching: isFetching
   };
 };
+
+export const setAuthTC = () => {
+  return (dispatch) => {
+    loginAPI.setAuth().then(data => {
+      if(data.resultCode === 0){
+        let {id, email, login} = data.data;
+        dispatch(setAuthUserData(id, email, login));
+      }
+    })
+  }
+}
 
 export default authReducer;

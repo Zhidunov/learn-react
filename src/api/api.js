@@ -18,6 +18,26 @@ const instances = {
   })
 };
 
+export const loginAPI = {
+  setAuth(){
+    return  instances.instanceSamuraiJS.get(`auth/me`)
+      .then(res => {
+        return res.data;
+        }
+      );
+  }
+}
+
+export const profileAPI = {
+  setProfile(id){
+    return  instances.instanceSndbx.get(`profile/${id}`)
+      .then(res => {
+        return res.data;
+        }
+      );
+  }
+}
+
 export const usersAPI = {
   getUsers(currentPage, pageSize){
     return instances.instanceSndbx
