@@ -2,14 +2,11 @@ import React from "react";
 import {
   addPost,
   updateNewPostText,
-  setUserProfile,
   setUserProfileTC
 } from "./../../redux/profileReducer.js";
 import { connect } from "react-redux";
-import * as axios from "axios";
 import Profile from "./Profile.jsx";
-import Preloader from "./../Common/Preloader/Preloader.jsx";
-import { withRouter } from "react-router";
+import { withRouter, Redirect } from "react-router";
 
 class ProfileContainer extends React.Component {
   componentDidMount() {
@@ -17,6 +14,9 @@ class ProfileContainer extends React.Component {
   }
 
   render() {
+    if(!this.props.isAuth){
+      return <Redirect to={"/login"} />
+    }
     return (
       <div>
         <Profile {...this.props} profile={this.props.profile} />
@@ -29,32 +29,11 @@ function mapStateToProps(state) {
   return {
     posts: state.profilePage.posts,
     newPostText: state.profilePage.newPostText,
-    profile: state.profilePage.profile
+    profile: state.profilePage.profile,
+    isAuth: state.auth.isAuth
   };
 }
 
-// function mapDispatchToProps(dispatch) {
-//   return {
-//     onFollow: userId => {
-//       dispatch(followActionCreator(userId));
-//     },
-//     onUnFollow: userId => {
-//       dispatch(unFollowActionCreator(userId));
-//     },
-//     setUsers: users => {
-//       dispatch(setUsersActionCreator(users));
-//     },
-//     setCurrentPage: page => {
-//       dispatch(setCurrentPageActionCreator(page));
-//     },
-//     setTotalUsersCount: count => {
-//       dispatch(setTotalUsersCountActionCreator(count));
-//     },
-//     setToggleIsFetching: isFetching => {
-//       dispatch(toggleIsFetchingActionCreator(isFetching));
-//     }
-//   };
-// }
 
 let withURLProfCont = withRouter(ProfileContainer);
 
@@ -63,7 +42,6 @@ export default connect(
   {
     addPost,
     updateNewPostText,
-    setUserProfile,
     setUserProfileTC
   }
 )(withURLProfCont);

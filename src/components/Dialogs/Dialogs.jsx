@@ -3,6 +3,7 @@ import styles from "./Dialogs.module.css";
 import DialogItem from "./DialogItem/DialogItem.jsx";
 import Message from "./Message/Message.jsx";
 import { Button } from "./../Common/Button/Button.jsx";
+import { Redirect } from "react-router-dom";
 
 function Dialogs(props) {
   let dialogsElements = props.dialogsPage.dialogs.map(d => (
@@ -19,6 +20,10 @@ function Dialogs(props) {
     let text = newMessageText.current.value;
     props.onMessageChange(text);
   }
+
+  if(!props.isAuth){
+    return <Redirect to={"/login"} />
+  };
 
   return (
     <div className={styles.dialogs}>
