@@ -1,9 +1,5 @@
 import React from "react";
-import {
-  addPost,
-  updateNewPostText,
-  setUserProfileTC
-} from "./../../redux/profileReducer.js";
+import { setUserProfileTC } from "./../../redux/profileReducer.js";
 import { connect } from "react-redux";
 import Profile from "./Profile.jsx";
 import { withAuthRedirect } from "./../hoc/withAuthRedirect.js";
@@ -16,7 +12,6 @@ class ProfileContainer extends React.Component {
   }
 
   render() {
-    
     return (
       <div>
         <Profile {...this.props} profile={this.props.profile} />
@@ -31,9 +26,12 @@ function mapStateToProps(state) {
   };
 }
 
-export default compose(connect(
-  mapStateToProps,
-  {
-    setUserProfileTC
-  }
-), withRouter, withAuthRedirect)(ProfileContainer);
+export default compose(
+  connect(
+    mapStateToProps,
+    {
+      setUserProfileTC
+    }
+  ),
+  withRouter //withAuthRedirect
+)(ProfileContainer);
