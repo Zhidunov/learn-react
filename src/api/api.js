@@ -42,7 +42,7 @@ export const profileAPI = {
 
   updateStatus(status) {
     return instances.instanceSndbx
-      .put(`profile/status`, { status: status })
+      .put(`profile/status/`, { status: status })
       .then(res => {
         return res.data;
       });
