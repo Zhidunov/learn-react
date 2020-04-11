@@ -19,49 +19,54 @@ const instances = {
 };
 
 export const loginAPI = {
-  setAuth(){
-    return  instances.instanceSamuraiJS.get(`auth/me`)
-      .then(res => {
-        return res.data;
-        }
-      );
+  setAuth() {
+    return instances.instanceSamuraiJS.get(`auth/me`).then(res => {
+      return res.data;
+    });
   }
-}
+};
 
 export const profileAPI = {
-  setProfile(id){
-    return  instances.instanceSndbx.get(`profile/${id}`)
+  getProfile(id) {
+    return instances.instanceSndbx.get(`profile/` + id).then(res => {
+      return res.data;
+    });
+  },
+
+  getStatus(id) {
+    return instances.instanceSndbx.get(`profile/status/` + id).then(res => {
+      debugger;
+      return res.data;
+    });
+  },
+
+  updateStatus(status) {
+    return instances.instanceSndbx
+      .put(`profile/status`, { status: status })
       .then(res => {
         return res.data;
-        }
-      );
+      });
   }
-}
+};
 
 export const usersAPI = {
-  getUsers(currentPage, pageSize){
+  getUsers(currentPage, pageSize) {
     return instances.instanceSndbx
-      .get(
-        `users?page=${currentPage}&count=${pageSize}`
-      )
+      .get(`users?page=${currentPage}&count=${pageSize}`)
       .then(res => {
         return res.data;
       });
   },
 
-  setFollow(id){
-    return instances.instanceSamuraiJS
-      .post(`follow/${id}`)
-      .then(res => {
-        return res.data;
-      });
+  setFollow(id) {
+    return instances.instanceSamuraiJS.post(`follow/${id}`).then(res => {
+      return res.data;
+    });
   },
 
-  setUnFollow(id){
-    return instances.instanceSamuraiJS
-      .delete(`follow/${id}`)
-      .then(res => {
-        return res.data;
-      });
+  setUnFollow(id) {
+    return instances.instanceSamuraiJS.delete(`follow/${id}`).then(res => {
+      return res.data;
+    });
   }
-}
+};

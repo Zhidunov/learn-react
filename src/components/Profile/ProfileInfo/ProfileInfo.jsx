@@ -12,7 +12,10 @@ function ProfileInfo(props) {
         <div className={styles.avatarImg}>
           <img src={props.profile.avatarURL} alt="logoprofile" />
         </div>
-        <ProfileStatus status={"Hello World!!!"} />
+        <ProfileStatus
+          status={props.status}
+          updateStatusTC={props.updateStatusTC}
+        />
       </div>
     );
   }
