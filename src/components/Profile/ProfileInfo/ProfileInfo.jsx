@@ -4,9 +4,6 @@ import Preloader from "../../Common/Preloader/Preloader.jsx";
 import ProfileStatus from "./../ProfileStatus/ProfileStatus.jsx";
 
 function ProfileInfo(props) {
-  if (!props.profile) {
-    return <Preloader />;
-  } else {
     return (
       <div>
         <div className={styles.avatarImg}>
@@ -18,7 +15,6 @@ function ProfileInfo(props) {
         />
       </div>
     );
-  }
 }
 
 export default ProfileInfo;
