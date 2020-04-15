@@ -2,8 +2,8 @@ import React from "react";
 import styles from "./Dialogs.module.css";
 import DialogItem from "./DialogItem/DialogItem.jsx";
 import Message from "./Message/Message.jsx";
-import { Button } from "./../Common/Button/Button.jsx";
 import { Redirect } from "react-router-dom";
+import AddMessageFormRedux from "./AddMessageForm/AddMessageForm";
 
 function Dialogs(props) {
   let dialogsElements = props.dialogsPage.dialogs.map(d => (
@@ -14,11 +14,8 @@ function Dialogs(props) {
     <Message id={m.id} message={m.message} key={m.id} />
   ));
 
-  let newMessageText = React.createRef();
-
-  function onMessageChange() {
-    let text = newMessageText.current.value;
-    props.onMessageChange(text);
+  function AddMessage(values){
+    props.AddMessage(values.newMessageBody);
   }
 
   if(!props.isAuth){
@@ -28,28 +25,8 @@ function Dialogs(props) {
   return (
     <div className={styles.dialogs}>
       <div className={styles.dialogs_items}>{dialogsElements}</div>
-      <div className={styles.dialogs_messages}>
-        <div>{messagesElements}</div>
-
-        <div>
-          <textarea
-            onChange={onMessageChange}
-            value={props.dialogsPage.newMessageText}
-            ref={newMessageText}
-            cols="30"
-            rows="5"
-          />
-        </div>
-        <div>
-          <Button
-            onClick={props.onAddMessage}
-            type="button"
-            buttonStyle="btn--primary--outline"
-          >
-            Отправить
-          </Button>
-        </div>
-      </div>
+      <div>{messagesElements}</div>
+      <AddMessageFormRedux onSubmit={AddMessage} />
     </div>
   );
 }

@@ -1,41 +1,21 @@
 import React from "react";
 import styles from "./MyPosts.module.css";
 import Post from "./Post/Post.jsx";
+import AddPostForm from "./AddPostForm/AddPostForm.jsx";
 
 function MyPosts(props) {
   let postsElement = props.profilePage.posts.map(p => (
     <Post message={p.message} likesCount={p.likesCount} key={p.id} />
   ));
 
-  let newPostText = React.createRef();
-
-  function onAddPost() {
-    props.addPost();
-  }
-
-  function onDeletePost() {
-    props.deletePost();
-  }
-
-  function onPostChange() {
-    let text = newPostText.current.value;
-    props.updateNewPostText(text);
-  }
+  function AddPost(values) {
+    props.addPost(values.newPostBody);
+  };
 
   return (
-    <div className={styles.postsBlock}>
-      <div>
-        <textarea
-          ref={newPostText}
-          onChange={onPostChange}
-          value={props.profilePage.newPostText}
-        />
-        <div>
-          <button onClick={onAddPost}>Опубликовать</button>
-          <button onClick={onDeletePost}>Удалить</button>
-        </div>
-      </div>
+    <div>
       <div className={styles.posts}>{postsElement}</div>
+      <AddPostForm onSubmit={AddPost} />
     </div>
   );
 }
