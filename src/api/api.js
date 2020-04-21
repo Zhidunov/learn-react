@@ -23,6 +23,16 @@ export const loginAPI = {
     return instances.instanceSamuraiJS.get(`auth/me`).then(res => {
       return res.data;
     });
+  },
+  login(email, password, rememberMe = false) {
+    return instances.instanceSamuraiJS.post(`auth/login`, {
+      email,
+      password,
+      rememberMe
+    });
+  },
+  logout() {
+    return instances.instanceSamuraiJS.delete(`auth/login`);
   }
 };
 

@@ -1,5 +1,5 @@
 import React from "react";
-import { setAuthTC } from "./../../redux/authReducer.js";
+import { setAuthTC, logout } from "./../../redux/authReducer.js";
 import { connect } from "react-redux";
 import Header from "./Header.jsx";
 
@@ -26,6 +26,7 @@ function mapStateToProps(state) {
 export default connect(
   mapStateToProps,
   {
-    setAuthTC
+    setAuthTC,
+    logout
   }
 )(HeaderContainer);
