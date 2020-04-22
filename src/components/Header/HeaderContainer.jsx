@@ -1,11 +1,11 @@
 import React from "react";
-import { setAuthTC, logout } from "./../../redux/authReducer.js";
+import { logout } from "./../../redux/authReducer.js";
 import { connect } from "react-redux";
 import Header from "./Header.jsx";
 
 class HeaderContainer extends React.Component {
   componentDidMount() {
-    this.props.setAuthTC();
+    //this.props.setAuthTC();
   }
 
   render() {
@@ -26,7 +26,7 @@ function mapStateToProps(state) {
 export default connect(
   mapStateToProps,
   {
-    setAuthTC,
+    //setAuthTC,
     logout
   }
 )(HeaderContainer);

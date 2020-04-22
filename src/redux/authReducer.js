@@ -50,7 +50,7 @@ export const setToggleIsFetching = isFetching => {
 
 export const setAuthTC = () => {
   return dispatch => {
-    loginAPI.setAuth().then(data => {
+    return loginAPI.setAuth().then(data => {
       if (data.resultCode === 0) {
         let { id, email, login } = data.data;
         dispatch(setAuthUserData(id, email, login, true));
