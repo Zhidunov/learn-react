@@ -1,6 +1,6 @@
 import React from "react";
 import styles from "./ProfileInfo.module.css";
-import ProfileStatus from "./../ProfileStatus/ProfileStatus.jsx";
+import ProfileStatusWithHooks from "./../ProfileStatus/ProfileStatusWithHooks.jsx";
 
 function ProfileInfo(props) {
   return (
@@ -8,7 +8,7 @@ function ProfileInfo(props) {
       <div className={styles.avatarImg}>
         <img src={props.profile.avatarURL} alt="logoprofile" />
       </div>
-      <ProfileStatus
+      <ProfileStatusWithHooks
         status={props.status}
         updateStatusTC={props.updateStatusTC}
       />
