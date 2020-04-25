@@ -61,12 +61,13 @@ export const setAuthTC = () => {
 
 export const login = (email, password, rememberMe) => {
   return dispatch => {
-    loginAPI.login(email, password, rememberMe).then(data => {
-      if (data.resultCode === 0) {
+    loginAPI.login(email, password, rememberMe).then(res => {
+      if (res.data.resultCode === 0) {
         dispatch(setAuthTC());
       } else {
+        debugger
         let message =
-          data.messages.length > 0 ? data.messages[0] : "Some error";
+        res.data.messages.length > 0 ? res.data.messages[0] : "Some error";
         dispatch(
           stopSubmit("login", {
             _error: message
@@ -79,8 +80,8 @@ export const login = (email, password, rememberMe) => {
 
 export const logout = () => {
   return dispatch => {
-    loginAPI.logout().then(data => {
-      if (data.resultCode === 0) {
+    loginAPI.logout().then(res => {
+      if (res.data.resultCode === 0) {
         dispatch(setAuthUserData(null, null, null, false));
       }
     });
