@@ -45,7 +45,6 @@ export const profileAPI = {
 
   getStatus(id) {
     return instances.instanceSndbx.get(`profile/status/` + id).then(res => {
-      debugger;
       return res.data;
     });
   },
