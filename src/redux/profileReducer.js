@@ -3,6 +3,7 @@ import { profileAPI } from "./../api/api.js";
 const ADD_POST = "ADD_POST";
 const GET_USER_PROFILE = "GET_USER_PROFILE";
 const SET_STATUS = "SET_STATUS";
+const DELETE_POST = "DELETE_POST";
 
 let initialState = {
   posts: [
@@ -23,6 +24,17 @@ function profileReducer(state = initialState, action) {
       };
       return { ...state, posts: [...state.posts, post], newPostText: "" };
     }
+    case DELETE_POST: {
+      return {
+        ...state,
+        posts: state.posts.filter(p => {
+          if (p.id !== action.id) return true;
+          else {
+            return false;
+          }
+        })
+      };
+    }
     case GET_USER_PROFILE: {
       return { ...state, profile: action.profile };
     }
@@ -38,6 +50,13 @@ export function addPost(text) {
   return {
     type: ADD_POST,
     text
+  };
+}
+
+export function deletePost(id) {
+  return {
+    type: DELETE_POST,
+    id
   };
 }
 
