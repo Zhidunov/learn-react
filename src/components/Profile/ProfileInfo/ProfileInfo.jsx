@@ -2,15 +2,15 @@ import React from "react";
 import styles from "./ProfileInfo.module.css";
 import ProfileStatusWithHooks from "./../ProfileStatus/ProfileStatusWithHooks.jsx";
 
-function ProfileInfo(props) {
+function ProfileInfo({profile, status, updateStatusTC}) {
   return (
     <div>
       <div className={styles.avatarImg}>
-        <img src={props.profile.avatarURL} alt="logoprofile" />
+        <img src={profile.avatarURL} alt="logoprofile" />
       </div>
       <ProfileStatusWithHooks
-        status={props.status}
-        updateStatusTC={props.updateStatusTC}
+        status={status}
+        updateStatusTC={updateStatusTC}
       />
     </div>
   );

@@ -1,9 +1,9 @@
 import { profileAPI } from "./../api/api.js";
 
-const ADD_POST = "ADD_POST";
-const GET_USER_PROFILE = "GET_USER_PROFILE";
-const SET_STATUS = "SET_STATUS";
-const DELETE_POST = "DELETE_POST";
+const ADD_POST = "profilePage/ADD_POST";
+const GET_USER_PROFILE = "profilePage/GET_USER_PROFILE";
+const SET_STATUS = "profilePage/SET_STATUS";
+const DELETE_POST = "profilePage/DELETE_POST";
 
 let initialState = {
   posts: [
@@ -74,33 +74,27 @@ export function setStatus(status) {
   };
 }
 
-export const getUserProfileTC = id => {
-  return dispatch => {
+export const getUserProfileTC = id => async (dispatch) => {
     if (!id) {
       id = 2;
     }
-    profileAPI.getProfile(id).then(data => {
-      dispatch(getUserProfile(data));
-    });
-  };
+    let data = await profileAPI.getProfile(id);
+    dispatch(getUserProfile(data));
 };
 
-export const getStatusTC = id => {
-  return dispatch => {
-    profileAPI.getStatus(id).then(data => {
+export const getStatusTC = id => async (dispatch) => {
+    let data = await profileAPI.getStatus(id);
+    
+    dispatch(setStatus(data));
+};
+
+export const updateStatusTC = status => async (dispatch) => {
+  let data = await profileAPI.updateStatus(status);
+
+  if (data.resultCode === 0) {
       dispatch(setStatus(data));
-    });
-  };
-};
+  }
 
-export const updateStatusTC = status => {
-  return dispatch => {
-    profileAPI.updateStatus(status).then(data => {
-      if (data.resultCode === 0) {
-        dispatch(setStatus(data));
-      }
-    });
-  };
 };
 
 export default profileReducer;
