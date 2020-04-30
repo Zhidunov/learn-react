@@ -9,11 +9,13 @@ import News from "./components/News/News.jsx";
 import Music from "./components/Music/Music.jsx";
 import Settings from "./components/Settings/Settings.jsx";
 import UsersContainer from "./components/Users/UsersContainer.jsx";
-import { Route, withRouter } from "react-router-dom";
+import { Route, withRouter, BrowserRouter } from "react-router-dom";
 import { initializeApp } from "./redux/appReducer.js";
 import { connect } from "react-redux";
 import { compose } from "redux";
 import Preloader from "./components/Common/Preloader/Preloader";
+import { Provider } from "react-redux";
+import store from "./redux/store";
 
 class App extends React.Component {
   componentDidMount() {
@@ -42,16 +44,25 @@ class App extends React.Component {
   }
 }
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
   return {
-    initialized: state.app.initialized
+    initialized: state.app.initialized,
   };
 };
 
-export default compose(
-  connect(
-    mapStateToProps,
-    { initializeApp }
-  ),
+const AppContainer = compose(
+  connect(mapStateToProps, { initializeApp }),
   withRouter
 )(App);
+
+const SamuraiJSApp = (props) => {
+  return (
+    <BrowserRouter>
+      <Provider store={store}>
+        <AppContainer />
+      </Provider>
+    </BrowserRouter>
+  );
+};
+
+export default SamuraiJSApp;

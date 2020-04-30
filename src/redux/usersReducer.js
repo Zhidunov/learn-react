@@ -139,37 +139,11 @@ export const getUsersTC = (currentPage, pageSize) => async (dispatch) => {
   let data = await usersAPI.getUsers(currentPage, pageSize);
 
   dispatch(setToggleIsFetching(false));
-  dispatch(setUsers(data.users));
+  dispatch(setUsers(data.items));
   dispatch(setTotalUsersCount(data.totalCount));
   dispatch(setCurrentPage(currentPage));
 }
 
-
-
-// const followUnfollowFlow = async (id, dispatch, action) => {
-
-//   dispatch(setToggleIsFollowing(true, id));
-//   if (action == "unfollow") {
-//     let data = await usersAPI.setUnFollow(id);
-//     if (data.resultCode === 0) {
-//       dispatch(unfollowSuccess(id));
-//     }
-//   } else if (action == "follow") {
-//     let data = await usersAPI.setFollow(id);
-//     if (data.resultCode === 0) {
-//       dispatch(followSuccess(id));
-//     }
-//   }
-//   dispatch(setToggleIsFollowing(false, id));
-// }
-
-
-// export const setUnFollowTC = (id) => (dispatch) => {
-//   followUnfollowFlow(id, dispatch, "unfollow");
-// }
-// export const setFollowTC = (id) => (dispatch) => {
-//   followUnfollowFlow(id, dispatch, "follow");
-// }
 
 const followUnfollowFlow = async (dispatch, id, apiMethod, actionCreator) => {
   dispatch(setToggleIsFollowing(true, id));

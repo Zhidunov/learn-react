@@ -7,7 +7,7 @@ let state = {
   ]
 };
 
-test("Должен быть добавлен новый пост", () => {
+it("Должен быть добавлен новый пост", () => {
   let action = addPost("text-test");
 
   let newState = profileReducer(state, action);
@@ -15,7 +15,7 @@ test("Должен быть добавлен новый пост", () => {
   expect(newState.posts.length).toBe(3);
 });
 
-test("Должен быть удален пост с заданным id", () => {
+it("Должен быть удален пост с заданным id", () => {
   let action = deletePost(1);
 
   let newState = profileReducer(state, action);

@@ -10,12 +10,12 @@ import { withAuthRedirect } from "./../hoc/withAuthRedirect.js";
 import { withRouter } from "react-router";
 import { compose } from "redux";
 
+
 class ProfileContainer extends React.Component {
   componentDidMount() {
     let userID = this.props.match.params.UserID;
     if (!userID) {
-      userID = 2;
-      //userID = this.props.authorizedUserID;
+      userID = this.props.authorizedUserID;
       if (!userID) {
         this.props.history.push("/login");
       }

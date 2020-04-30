@@ -21,6 +21,7 @@ const instances = {
 export const loginAPI = {
   setAuth() {
     return instances.instanceSamuraiJS.get(`auth/me`).then(res => {
+      debugger
       return res.data;
     });
   },
@@ -38,21 +39,22 @@ export const loginAPI = {
 
 export const profileAPI = {
   getProfile(id) {
-    return instances.instanceSndbx.get(`profile/` + id).then(res => {
+    return instances.instanceSamuraiJS.get(`profile/` + id).then(res => {
       return res.data;
     });
   },
 
   getStatus(id) {
-    return instances.instanceSndbx.get(`profile/status/` + id).then(res => {
+    return instances.instanceSamuraiJS.get(`profile/status/` + id).then(res => {
       return res.data;
     });
   },
 
   updateStatus(status) {
-    return instances.instanceSndbx
+    return instances.instanceSamuraiJS
       .put(`profile/status/`, { status: status })
       .then(res => {
+        debugger
         return res.data;
       });
   }
@@ -60,7 +62,7 @@ export const profileAPI = {
 
 export const usersAPI = {
   getUsers(currentPage, pageSize) {
-    return instances.instanceSndbx
+    return instances.instanceSamuraiJS
       .get(`users?page=${currentPage}&count=${pageSize}`)
       .then(res => {
         return res.data;
