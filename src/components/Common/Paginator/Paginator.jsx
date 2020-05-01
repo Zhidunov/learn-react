@@ -1,20 +1,46 @@
-import React from "react";
+import React, { useState } from "react";
 import styles from "./Paginator.module.css";
 
-function Paginator({totalUsersCount, pageSize, currentPage, onPageChanged}) {
-  let pagesCount = Math.ceil(totalUsersCount / pageSize);
+function Paginator({
+  totalItemsCount,
+  pageSize,
+  currentPage,
+  onPageChanged,
+  portionSize,
+}) {
+  let pagesCount = Math.ceil(totalItemsCount / pageSize);
   let pages = [];
   for (let i = 1; i <= pagesCount; i++) {
     pages.push(i);
   }
 
+  let portionCount = Math.ceil(pagesCount / portionSize);
+  let [PortionNumber, setPortionNumber] = useState(1);
+
+  let leftPortionPageNumber = PortionNumber * portionSize - (portionSize - 1);
+  let rightPortionPageNumber = PortionNumber * portionSize;
+
   return (
-      <div>
-        {pages.map(p => {
+    <div className={styles.paginator}>
+      {PortionNumber > 1 && (
+        <button
+          onClick={() => {
+            setPortionNumber(PortionNumber - 1);
+          }}
+        >
+          ...
+        </button>
+      )}
+      {pages
+        .filter(
+          (p) => p >= leftPortionPageNumber && p <= rightPortionPageNumber
+        )
+        .map((p) => {
           return (
             <span
               className={currentPage === p ? styles.selectedPage : ""}
-              onClick={() => {
+              key={p}
+              onClick={(e) => {
                 onPageChanged(p);
               }}
             >
@@ -22,7 +48,16 @@ function Paginator({totalUsersCount, pageSize, currentPage, onPageChanged}) {
             </span>
           );
         })}
-      </div>
+      {PortionNumber < portionCount && (
+        <button
+          onClick={() => {
+            setPortionNumber(PortionNumber + 1);
+          }}
+        >
+          ...
+        </button>
+      )}
+    </div>
   );
 }
 

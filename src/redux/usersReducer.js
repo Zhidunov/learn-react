@@ -12,7 +12,7 @@ const TOGGLE_IS_FOLLOWING = "TOGGLE_IS_FOLLOWING";
 function usersReducer(
   state = {
     users: [],
-    pageSize: 4,
+    pageSize: 10,
     totalUsersCount: 0,
     currentPage: 1,
     isFetching: false,
@@ -136,12 +136,13 @@ export function setToggleIsFollowing(followingInProgress, id) {
 
 export const getUsersTC = (currentPage, pageSize) => async (dispatch) => {
   dispatch(setToggleIsFetching(true));
+  dispatch(setCurrentPage(currentPage));
   let data = await usersAPI.getUsers(currentPage, pageSize);
 
   dispatch(setToggleIsFetching(false));
   dispatch(setUsers(data.items));
   dispatch(setTotalUsersCount(data.totalCount));
-  dispatch(setCurrentPage(currentPage));
+  
 }
 
 

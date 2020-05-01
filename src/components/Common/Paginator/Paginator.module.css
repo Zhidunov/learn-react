@@ -1,3 +1,7 @@
+  .paginator {
+    padding: 20px;
+  }
+  
   .selectedPage {
     font-weight: bold;
   }

@@ -21,7 +21,6 @@ const instances = {
 export const loginAPI = {
   setAuth() {
     return instances.instanceSamuraiJS.get(`auth/me`).then(res => {
-      debugger
       return res.data;
     });
   },
@@ -54,7 +53,6 @@ export const profileAPI = {
     return instances.instanceSamuraiJS
       .put(`profile/status/`, { status: status })
       .then(res => {
-        debugger
         return res.data;
       });
   }

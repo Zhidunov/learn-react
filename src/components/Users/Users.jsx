@@ -16,10 +16,11 @@ function Users({
   return (
     <div className={styles.usersPage}>
       <Paginator
-        totalUsersCount={totalUsersCount}
+        totalItemsCount={totalUsersCount}
         pageSize={pageSize}
         currentPage={currentPage}
         onPageChanged={onPageChanged}
+        portionSize={10}
       />
       <div>
         {props.users.map(u => (
