@@ -39,5 +39,8 @@
     ]
   },
   "keywords": [],
-  "description": ""
+  "description": "",
+  "devDependencies": {
+    "react-test-renderer": "^16.12.0"
+  }
 }
