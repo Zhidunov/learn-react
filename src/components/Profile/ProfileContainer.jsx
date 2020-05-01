@@ -56,6 +56,6 @@ export default compose(
       updateStatusTC
     }
   ),
-  withRouter
-  //withAuthRedirect
+  withRouter,
+  withAuthRedirect
 )(ProfileContainer);

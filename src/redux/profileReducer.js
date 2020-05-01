@@ -81,7 +81,6 @@ export const getUserProfileTC = id => async (dispatch) => {
 
 export const getStatusTC = id => async (dispatch) => {
     let data = await profileAPI.getStatus(id);
-    debugger
     dispatch(setStatus(data));
 };
 
@@ -89,7 +88,6 @@ export const updateStatusTC = status => async (dispatch) => {
   let data = await profileAPI.updateStatus(status);
 
   if (data.resultCode === 0) {
-      debugger
       dispatch(setStatus(status));
   }
 
