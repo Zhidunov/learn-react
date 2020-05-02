@@ -11,6 +11,7 @@ import Preloader from "./components/Common/Preloader/Preloader";
 import { Provider } from "react-redux";
 import store from "./redux/store";
 import {withLazySuspense} from "./components/hoc/withLazySuspense.js";
+import MasonNavigation from "./components/Navigation/MasonNavigation";
 
 const DialogsContainer = React.lazy(() => import("./components/Dialogs/DialogsContainer.jsx"));
 const ProfileContainer = React.lazy(() => import("./components/Profile/ProfileContainer.jsx"));
@@ -30,19 +31,20 @@ class App extends React.Component {
       return <Preloader />;
     }
     return (
-      <div className="app_main">
-        <HeaderContainer />
-        <Nav />
-        <div className="app_main_content">
-          <Route path="/profile/:UserID?" render={withLazySuspense(ProfileContainer)} />
-          <Route path="/users" render={() => <UsersContainer />} />
-          <Route path="/dialogs" render={withLazySuspense(DialogsContainer)} />
-          <Route path="/login" render={withLazySuspense(Login)} />
-          <Route path="/news" component={withLazySuspense(News)} />
-          <Route path="/music" component={withLazySuspense(Music)} />
-          <Route path="/settings" component={withLazySuspense(Settings)} />
-        </div>
-      </div>
+      <MasonNavigation />
+      // <div className="app_main">
+      //   <HeaderContainer />
+      //   <Nav />
+      //   <div className="app_main_content">
+      //     <Route path="/profile/:UserID?" render={withLazySuspense(ProfileContainer)} />
+      //     <Route path="/users" render={() => <UsersContainer />} />
+      //     <Route path="/dialogs" render={withLazySuspense(DialogsContainer)} />
+      //     <Route path="/login" render={withLazySuspense(Login)} />
+      //     <Route path="/news" component={withLazySuspense(News)} />
+      //     <Route path="/music" component={withLazySuspense(Music)} />
+      //     <Route path="/settings" component={withLazySuspense(Settings)} />
+      //   </div>
+      // </div>
     );
   }
 }
