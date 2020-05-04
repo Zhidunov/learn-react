@@ -1,4 +1,5 @@
 import React from "react";
+import styles from './UsersContainer.module.css';
 import {
   setCurrentPage,
   setToggleIsFollowing,
@@ -31,7 +32,7 @@ class UsersContainer extends React.Component {
 
   render() {
     return (
-      <>
+      <div className={styles.container}>
         {this.props.isFetching ? <Preloader /> : null}
           <Users
             totalUsersCount={this.props.totalUsersCount}
@@ -46,7 +47,7 @@ class UsersContainer extends React.Component {
             setUnFollowTC={this.props.setUnFollowTC}
             setFollowTC={this.props.setFollowTC}
           />
-      </>
+      </div>
     );
   }
 }

@@ -3,7 +3,7 @@ import styles from './Settings.module.css';
 
 function Settings() {
   return (
-    <div>
+    <div className={styles.container} >
       Настройки
     </div>
   );

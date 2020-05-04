@@ -9,7 +9,7 @@ function Profile({profile, status, updateStatusTC}) {
     return <Preloader />;
   } else { 
   return (
-    <div>
+    <div className={styles.container}>
       <ProfileInfo
         profile={profile}
         status={status}

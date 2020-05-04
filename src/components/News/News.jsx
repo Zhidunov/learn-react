@@ -3,7 +3,7 @@ import styles from './News.module.css';
 
 function News() {
   return (
-    <div>
+    <div className={styles.container} >
       Новости
     </div>
   );

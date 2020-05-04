@@ -5,3 +5,6 @@
 .avatarImg {
   padding: 20px;
 }
+.avatarImg img {
+  width: 100px;
+}

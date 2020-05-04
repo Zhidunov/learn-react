@@ -5,7 +5,7 @@ import { Input } from "./../Common/FormsControls/FormsControls.jsx";
 import { connect } from "react-redux";
 import { login, logout } from "./../../redux/authReducer";
 import { Redirect } from "react-router-dom";
-import styles from "./../Common/FormsControls/FormsControls.module.css";
+import styles from "./Login.module.css";
 
 const LoginForm = ({handleSubmit, error}) => {
   return (
@@ -51,7 +51,7 @@ const Login = props => {
   }
 
   return (
-    <div>
+    <div className={styles.container}>
       <h1>LOGIN</h1>
       <LoginReduxForm onSubmit={onSubmit} />
     </div>

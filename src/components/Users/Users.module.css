@@ -1,8 +1,18 @@
 .usersPage {
-  padding: 20px;
+  margin-left: 5rem;
+  background: rgb(248,248,248);
+  background: linear-gradient(90deg, rgba(248,248,248,1) 0%, rgba(207,202,200,1) 100%);
+  min-height: 100vh;
+  padding: 50px;
 }
-
 .usersPage img {
   width: 100px;
   height: 100px;
+}
+
+/* Small screens */
+@media only screen and (max-width: 600px) {
+  .usersPage {
+    margin: 0;
+  }
 }
