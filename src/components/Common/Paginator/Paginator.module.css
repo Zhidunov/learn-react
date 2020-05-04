@@ -1,7 +1,70 @@
   .paginator {
-    padding: 20px;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
   }
+
+  .container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .box {
+    position: relative;
+    background: #fff;
+    display: flex;
+    padding: 10px 20px;
+    border-radius: 50px;
+    box-shadow: 0 5px 15px rgba(0,0,0,.2);
+  }
+
+ .box span {
+    list-style: none;
+    line-height: 50px;
+    margin: 0 5px;
+    display: block;
+    text-decoration: none;
+    color: #777;
+    font-weight: 600;
+    border-radius: 50%;
+  }
+
+  .pageNumber {
+    width:  50px;
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+  }
+  .box .selectedPage {
+    width:  50px;
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+    background-color: #333;
+    color: #fff;
+  }
+  .pageNumber:hover,
+  .selectedPage:hover {
+    background-color: #333;
+    color: #fff;
+  }
+
+  .box .prev {
+    margin-right: 30px;
+    font-weight: 700;
+    font-size: 20px;
+    user-select: none;
+  }
+  .box .next {
+    margin-left: 30px;
+    font-weight: 700;
+    font-size: 20px;
+    user-select: none;
+  }
+
+
   
-  .selectedPage {
+  /* .selectedPage {
     font-weight: bold;
-  }
+  } */

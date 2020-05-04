@@ -22,14 +22,16 @@ function Paginator({
 
   return (
     <div className={styles.paginator}>
-      {PortionNumber > 1 && (
-        <button
+      <div className={styles.container}>
+      <div className={styles.box}>
+      { PortionNumber > 1 && (
+        <span className={styles.prev}
           onClick={() => {
             setPortionNumber(PortionNumber - 1);
           }}
         >
-          ...
-        </button>
+          Prev
+        </span>
       )}
       {pages
         .filter(
@@ -38,7 +40,7 @@ function Paginator({
         .map((p) => {
           return (
             <span
-              className={currentPage === p ? styles.selectedPage : ""}
+              className={currentPage === p ? styles.selectedPage : styles.pageNumber}
               key={p}
               onClick={(e) => {
                 onPageChanged(p);
@@ -49,14 +51,16 @@ function Paginator({
           );
         })}
       {PortionNumber < portionCount && (
-        <button
+        <span className={styles.next}
           onClick={() => {
             setPortionNumber(PortionNumber + 1);
           }}
         >
-          ...
-        </button>
+          Next
+        </span>
       )}
+      </div>
+      </div>
     </div>
   );
 }
