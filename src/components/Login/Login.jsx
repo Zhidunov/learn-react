@@ -7,9 +7,10 @@ import { login, logout } from "./../../redux/authReducer";
 import { Redirect } from "react-router-dom";
 import styles from "./Login.module.css";
 
-const LoginForm = ({handleSubmit, error}) => {
+const LoginForm = ({ handleSubmit, error }) => {
   return (
     <form onSubmit={handleSubmit}>
+      <h1>LOGIN</h1>
       <div>
         <Field
           placeholder={"E-mail"}
@@ -30,9 +31,7 @@ const LoginForm = ({handleSubmit, error}) => {
       <div>
         <input type={"checkbox"} name={"rememberMe"} component={Input} />
       </div>
-      {error && (
-        <div className={styles.formSummaryError}>{error}</div>
-      )}
+      {error && <div className={styles.formSummaryError}>{error}</div>}
       <div>
         <button>Войти</button>
       </div>
@@ -41,8 +40,8 @@ const LoginForm = ({handleSubmit, error}) => {
 };
 const LoginReduxForm = reduxForm({ form: "login" })(LoginForm);
 
-const Login = props => {
-  const onSubmit = formData => {
+const Login = (props) => {
+  const onSubmit = (formData) => {
     props.login(formData.email, formData.password, formData.rememberMe);
   };
 
@@ -52,19 +51,15 @@ const Login = props => {
 
   return (
     <div className={styles.container}>
-      <h1>LOGIN</h1>
       <LoginReduxForm onSubmit={onSubmit} />
     </div>
   );
 };
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
   return {
-    isAuth: state.auth.isAuth
+    isAuth: state.auth.isAuth,
   };
 };
 
-export default connect(
-  mapStateToProps,
-  { login, logout }
-)(Login);
+export default connect(mapStateToProps, { login, logout })(Login);

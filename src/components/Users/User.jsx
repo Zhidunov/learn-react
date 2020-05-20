@@ -6,7 +6,7 @@ import nonAva from "../../nonAvatar.png";
 function User({ user, followingInProgress, setUnFollowTC, setFollowTC }) {
   return (
     <div>
-      <div>
+      <div style={{"padding": "20px"}}>
         <NavLink to={"/profile/" + user.id}>
           
           { user.photos.small ? <img src={user.photos.small} alt="Пикча" className={styles.usersAva} /> : <img src={nonAva} alt="Пикча" className={styles.usersAva} />}

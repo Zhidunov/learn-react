@@ -4,6 +4,7 @@
   background: linear-gradient(90deg, rgba(248,248,248,1) 0%, rgba(207,202,200,1) 100%);
   min-height: 100vh;
   padding: 50px;
+  padding-left: 200px;
 }
 .usersPage img {
   width: 100px;

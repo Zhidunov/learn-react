@@ -2,7 +2,7 @@ import React from "react";
 import "./App.css";
 import NavigationContainer from "./components/Navigation/NavigationContainer.jsx";
 import UsersContainer from "./components/Users/UsersContainer.jsx";
-import { Route, withRouter, BrowserRouter, Switch } from "react-router-dom";
+import { Route, withRouter, HashRouter, Switch } from "react-router-dom";
 import { initializeApp } from "./redux/appReducer.js";
 import { connect } from "react-redux";
 import { compose } from "redux";
@@ -69,11 +69,11 @@ const AppContainer = compose(
 
 const MainApp = (props) => {
   return (
-    <BrowserRouter>
+    <HashRouter basename={process.env.PUBLIC_URL}>
       <Provider store={store}>
         <AppContainer />
       </Provider>
-    </BrowserRouter>
+    </HashRouter>
   );
 };
 
