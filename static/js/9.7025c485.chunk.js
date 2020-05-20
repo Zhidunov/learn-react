@@ -1,0 +1,2 @@
+(this["webpackJsonpreact-app"]=this["webpackJsonpreact-app"]||[]).push([[9],{308:function(n,t,e){n.exports={container:"Settings_container__1dFSD"}},312:function(n,t,e){"use strict";e.r(t);var a=e(0),c=e.n(a),r=e(308),i=e.n(r);t.default=function(){return c.a.createElement("div",{className:i.a.container},"\u041d\u0430\u0441\u0442\u0440\u043e\u0439\u043a\u0438")}}}]);
+//# sourceMappingURL=9.7025c485.chunk.js.map

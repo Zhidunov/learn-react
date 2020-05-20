@@ -1,0 +1,2 @@
+(this["webpackJsonpreact-app"]=this["webpackJsonpreact-app"]||[]).push([[7],{311:function(n,a,e){n.exports={container:"Games_container__2vFuM"}},315:function(n,a,e){"use strict";e.r(a);var t=e(0),c=e.n(t),r=e(311),s=e.n(r);a.default=function(){return c.a.createElement("div",{className:s.a.container},"\u0418\u0433\u0440\u044b")}}}]);
+//# sourceMappingURL=7.ee055f05.chunk.js.map
